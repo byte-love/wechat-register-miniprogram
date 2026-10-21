@@ -1,0 +1,94 @@
+<view class="agreement-page">
+  <text class="document-title">DataHub 平台隐私政策</text>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">01</text><text class="section-title">注册过程中处理的信息</text></view>
+    <text class="paragraph">本政策适用于示例科技有限公司运营的 DataHub 注册小程序，说明平台在账号注册、身份核验、材料审核、账号开通和服务联系过程中如何处理您的个人信息。平台按照合法、正当、必要和诚信原则，在实现注册服务所需范围内处理信息。</text>
+    <text class="paragraph important">敏感个人信息提示：您主动上传的学生证、校园卡、工作证等证明图片，以及含本人签名的数据使用协议，可能包含照片、证件号码、学籍或在职身份、本人签名等敏感个人信息。平台仅在对应身份确需材料核验时收集，用于确认注册资格和数据使用约定。相关信息泄露或被滥用可能影响您的人身、财产安全或人格权益。上传前请遮盖与核验目的无关的信息；选择其他核验方式时，可通过文末客服渠道联系平台。</text>
+    <view class="item-list">
+      <view class="item"><text class="item-dot">1</text><text><text class="important-inline">学校与身份信息：</text>学校名称、教师或在读博士生等身份类型，以及其他研究人员的细分身份；用于搜索学校、核验学校服务资格、匹配注册流程，并确定需要填写的资料和证明材料。</text></view>
+      <view class="item"><text class="item-dot">2</text><text><text class="important-inline">手机号与验证码：</text>微信授权手机号，或您手动输入的手机号、短信验证码及校验结果；用于验证号码归属、检查重复注册、保障账号安全和完成注册联系。手动输入手机号时，平台会向该号码发送短信验证码，校验通过后方可继续。</text></view>
+      <view class="item"><text class="item-dot">3</text><text><text class="important-inline">注册资料：</text>姓名、学院、系别、工作邮箱或个人邮箱、学号、入学年份、学制，以及您选择接收短信或邮件通知的偏好；用于核验申请资格、创建和管理账号、发送激活结果，并按您的选择提供数据服务提醒。</text></view>
+      <view class="item"><text class="item-dot">4</text><text><text class="important-inline">证明材料与签名协议：</text>您从相册选择或拍摄的学生证、校园卡、工作证等证明图片，以及亲笔签名的数据使用协议图片；用于核验学校、学院、学历层次或工作人员身份，确认您接受对应的数据使用约定。选择拒绝提供时，在线身份审核或协议确认流程将无法完成。您可通过客服渠道咨询其他核验方式。</text></view>
+      <view class="item"><text class="item-dot">5</text><text><text class="important-inline">协议文件读取：</text>您已选择的学校名称和协议文件请求；用于匹配并展示当前学校适用的 DataHub 平台数据使用协议 PDF，供您查看、保存和签署。</text></view>
+      <view class="item"><text class="item-dot">6</text><text><text class="important-inline">本地注册草稿：</text>当前注册步骤、已填写的表单、上传文件名称、服务器返回的材料地址和协议确认状态；保存在您的设备内，用于退出后恢复填写进度。注册成功或主动重新注册时，草稿会被清除；您也可通过微信清理小程序数据。</text></view>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">02</text><text class="section-title">设备能力与本地存储</text></view>
+    <view class="item-list">
+      <view class="item"><text class="item-dot">1</text><text>微信手机号能力：在您点击微信一键授权手机号后调用，平台以微信提供的动态凭证换取本次注册使用的手机号。您也可改用手动输入手机号和短信验证码的方式完成验证。</text></view>
+      <view class="item"><text class="item-dot">2</text><text>相册与相机选择能力：在您点击上传材料后调用，用于选择或拍摄证明材料和签名协议。平台仅接收您本次主动选中的图片。</text></view>
+      <view class="item"><text class="item-dot">3</text><text>文件下载与打开能力：在您点击下载协议后调用，用于获取并打开当前学校适用的协议 PDF。</text></view>
+      <view class="item"><text class="item-dot">4</text><text>本地存储能力：用于自动保存注册草稿和步骤状态，方便您返回后继续填写。</text></view>
+    </view>
+    <text class="paragraph paragraph-last">以上能力仅在您使用对应功能时调用。微信提供的开放能力同时适用微信平台的个人信息处理规则。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">03</text><text class="section-title">信息校验与使用规则</text></view>
+    <text class="paragraph">平台会按照固定注册规则校验学校服务资格、手机号和邮箱占用状态、短信验证码、学号重复情况及表单完整性，并根据您提交的材料进行资格审核。相关校验用于完成注册申请和保障账号安全。</text>
+    <text class="paragraph">短信和邮件数据服务提醒由页面选择项控制，您可取消相应选项。注册审核、账号激活和安全验证等完成核心服务所需的信息，平台可能通过您填写的手机号或邮箱发送。</text>
+    <text class="paragraph">平台在本政策载明的目的和范围内处理个人信息。处理目的、处理方式或信息种类发生变化时，平台将依法重新告知并取得相应同意。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">04</text><text class="section-title">委托处理与对外提供</text></view>
+    <text class="paragraph">为完成注册功能，平台可能委托技术服务方在约定范围内处理必要信息：</text>
+    <view class="item-list">
+      <view class="item"><text class="item-dot">1</text><text>微信平台：提供小程序运行、手机号授权、相册或相机选择等基础能力。</text></view>
+      <view class="item"><text class="item-dot">2</text><text>短信服务提供商：根据手机号和发送指令提供验证码及已选择的短信提醒服务。</text></view>
+      <view class="item"><text class="item-dot">3</text><text>服务器、文件存储和运维服务提供商：承载注册接口、材料存储、协议文件分发、安全防护和故障处理。</text></view>
+    </view>
+    <text class="paragraph">平台会与受托方约定处理目的、期限、方式、信息种类、保护措施和双方责任，并对受托处理活动进行监督。</text>
+    <text class="paragraph">需要向其他个人信息处理者提供信息时，平台将依法告知接收方名称、联系方式、处理目的、处理方式和信息种类，并在适用情形下取得您的单独同意。依据法律法规或有权机关要求处理的情形，按照相关规定执行。</text>
+    <text class="paragraph">涉及公开披露或向境外提供个人信息时，平台将依照适用法律另行履行告知、同意和安全保障程序。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">05</text><text class="section-title">保存期限与删除</text></view>
+    <view class="item-list">
+      <view class="item"><text class="item-dot">1</text><text>本地注册草稿保存在您的设备内，注册成功或主动重新注册时清除；您也可通过微信清理小程序数据。</text></view>
+      <view class="item"><text class="item-dot">2</text><text>短信验证码及校验记录在完成号码验证、防范滥用和必要安全审计所需的最短期限内保存。</text></view>
+      <view class="item"><text class="item-dot">3</text><text>注册资料、证明材料和签名协议按照完成审核、账号管理、争议处理及法定义务所需的最短期限保存。</text></view>
+      <view class="item"><text class="item-dot">4</text><text>保存目的完成或期限届满后，平台将删除或匿名化处理；法律法规要求继续保存的，平台仅在规定期限和范围内保存。</text></view>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">06</text><text class="section-title">信息安全</text></view>
+    <text class="paragraph">平台采取与处理风险相适应的访问控制、权限管理、传输保护、备份恢复和安全监测措施，并要求接触个人信息的人员承担保密义务。</text>
+    <text class="paragraph">发生或可能发生个人信息泄露、篡改、丢失时，平台将及时采取补救措施，并依法向您和有关主管部门告知。请妥善保管验证码和账号信息，上传前遮盖证明材料中与审核目的无关的证件号码、住址等内容。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">07</text><text class="section-title">您的权利</text></view>
+    <text class="paragraph">您依法享有知情、决定、限制或拒绝处理、查阅、复制、更正、补充、删除、撤回同意、注销账号，以及要求解释个人信息处理规则等权利。</text>
+    <view class="item-list">
+      <view class="item"><text class="item-dot">1</text><text>注册提交前，您可直接修改表单或重新选择材料；提交后可通过客服申请查阅、更正或补充。</text></view>
+      <view class="item"><text class="item-dot">2</text><text>您可取消短信或邮件提醒选项，并可通过客服申请撤回可选授权、删除个人信息或注销账号。撤回同意仅影响撤回后的处理活动。</text></view>
+      <view class="item"><text class="item-dot">3</text><text>为保障信息安全，平台会先核验您的身份，并在法律规定期限内处理。涉及法定保存义务或技术上难以立即删除的情形时，平台将停止除存储和必要安全保护以外的处理，并向您说明。</text></view>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">08</text><text class="section-title">未成年人个人信息</text></view>
+    <text class="paragraph">本服务主要面向高校教师、在读学生和其他研究人员。未满十八周岁的用户应在监护人指导下阅读本政策。未满十四周岁的用户，请由监护人先通过文末渠道联系平台；平台将在取得监护人同意并完成专门规则告知后处理相关个人信息。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">09</text><text class="section-title">政策更新</text></view>
+    <text class="paragraph">业务功能、个人信息处理方式或适用规则发生变化时，平台会更新本政策并在小程序内公布。涉及处理目的、处理方式、信息种类或保存期限等重要变化时，平台将以显著方式再次告知，并依法取得相应同意。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">10</text><text class="section-title">联系方式</text></view>
+    <text class="paragraph">个人信息处理者：示例科技有限公司</text>
+    <text class="paragraph">服务邮箱：customerservice@api.example.com</text>
+    <text class="paragraph">服务热线：021-66181082</text>
+  </view>
+  <view class="acknowledge-bar">
+    <button class="acknowledge-button" bindtap="acknowledge">我已知晓</button>
+  </view>
+</view>

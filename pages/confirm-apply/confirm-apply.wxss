@@ -1,0 +1,411 @@
+/* 卡片 / 按钮 / 成功页样式复制自 register.wxss（该项目样式是分页的，不全局共享） */
+.card {
+  overflow: hidden;
+  border: 1rpx solid #e5ebf3;
+  border-radius: 8rpx;
+  background: #fff;
+  box-shadow: 0 18rpx 48rpx rgba(15, 38, 63, 0.08);
+}
+
+.card-body {
+  padding: 34rpx 30rpx 8rpx;
+}
+
+.card-title {
+  display: block;
+  margin-bottom: 22rpx;
+  color: #172033;
+  font-size: 34rpx;
+  font-weight: 800;
+  line-height: 46rpx;
+}
+
+.card-footer {
+  display: flex;
+  gap: 18rpx;
+  padding: 22rpx 30rpx 30rpx;
+  border-top: 1rpx solid #edf1f6;
+  background: #fbfcfe;
+}
+
+.card-footer button {
+  flex: 1;
+  margin: 0;
+}
+
+.btn-primary {
+  height: 88rpx;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 12rpx 26rpx rgba(37, 99, 235, 0.24);
+}
+
+.btn-primary[disabled] {
+  background: #a8bdea;
+  color: #eef3ff;
+  box-shadow: none;
+}
+
+/* 已确认状态的按钮特调：带点灰调的蓝 */
+.btn-primary.btn-confirmed[disabled] {
+  background: #60a5fa !important; /* 更明显的浅蓝色 */
+  color: #ffffff !important;      /* 纯白字 */
+  opacity: 0.8;                   /* 增加一点透明度显得不可点击 */
+}
+
+.msg-error {
+  margin: 4rpx 0 12rpx;
+  padding: 16rpx 18rpx;
+  border-radius: 8rpx;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 25rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+
+.success-card {
+  padding: 64rpx 42rpx 42rpx;
+  text-align: center;
+}
+
+.success-icon-wrap {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 0 auto 26rpx;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #2f7df4 0%, #2563eb 100%);
+  box-shadow: 0 18rpx 38rpx rgba(37, 99, 235, 0.28);
+}
+
+.success-icon {
+  color: #fff;
+  font-size: 76rpx;
+  font-weight: 800;
+  line-height: 128rpx;
+}
+
+.success-title {
+  display: block;
+  color: #172033;
+  font-size: 38rpx;
+  font-weight: 800;
+  line-height: 54rpx;
+}
+
+.success-desc {
+  display: block;
+  margin-top: 14rpx;
+  color: #526174;
+  font-size: 27rpx;
+  line-height: 44rpx;
+}
+
+/* ===== 本页特有样式 ===== */
+.sk-intro {
+  padding: 18rpx 22rpx;
+  margin-bottom: 22rpx;
+  border-left: 6rpx solid #2563eb;
+  background: #f0f7ff;
+}
+
+.sk-intro-line {
+  display: block;
+  color: #26364d;
+  font-size: 27rpx;
+  line-height: 42rpx;
+}
+
+.highlight-free {
+  color: #2563eb;
+  font-weight: bold;
+  margin-left: 4rpx;
+}
+
+.sk-info-list {
+  border-top: 1rpx solid #edf1f6;
+}
+
+.sk-info-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid #edf1f6;
+}
+
+.sk-info-label {
+  flex: 0 0 150rpx;
+  color: #526174;
+  font-size: 27rpx;
+  line-height: 40rpx;
+}
+
+.sk-info-value {
+  flex: 1;
+  min-width: 0;
+  color: #172033;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  word-break: break-all;
+}
+
+.sk-db-title {
+  padding-top: 24rpx;
+  margin-bottom: 14rpx;
+  color: #172033;
+  font-size: 28rpx;
+  font-weight: 700;
+  line-height: 40rpx;
+}
+
+.sk-db-list-wrap {
+  max-height: 280rpx;
+  overflow-y: auto;
+  border: 1rpx solid #e5ebf3;
+  border-radius: 8rpx;
+  background: #fbfcfe;
+}
+
+.sk-db-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.sk-db-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  padding: 16rpx 20rpx;
+  border-bottom: 1rpx solid #edf1f6;
+}
+
+.sk-db-item:last-child {
+  border-bottom: 0;
+}
+
+.sk-db-dot {
+  flex: 0 0 auto;
+  color: #2563eb;
+  font-size: 30rpx;
+  line-height: 40rpx;
+}
+
+.sk-db-name {
+  min-width: 0;
+  color: #202733;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  word-break: break-all;
+}
+
+.sk-giver-item {
+  margin-top: 2rpx;
+}
+
+/* ===== 上传组件样式 (复用自 register.wxss) ===== */
+.field {
+  position: relative;
+  margin-bottom: 24rpx;
+}
+.field-label {
+  display: block;
+  margin-bottom: 12rpx;
+  color: #29384c;
+  font-size: 26rpx;
+  font-weight: 700;
+  line-height: 36rpx;
+}
+.upload-box {
+  min-height: 100rpx;
+  box-sizing: border-box;
+  padding: 10rpx 24rpx;
+  border: 2rpx dashed #b9c8da;
+  border-radius: 8rpx;
+  background: #fbfdff;
+}
+.upload-box.upload-done {
+  border-style: solid;
+  border-color: #22a06b;
+  background: #f3fbf7;
+}
+.upload-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 76rpx;
+}
+.upload-plus {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 12rpx;
+  border-radius: 50%;
+  background: #e8f1ff;
+  color: #2563eb;
+  font-size: 34rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.upload-hint {
+  color: #526174;
+  font-size: 26rpx;
+  line-height: 36rpx;
+}
+/* 上传框内的第二行提示（格式/大小限制） */
+.upload-text {
+  display: flex;
+  flex-direction: column;
+}
+.upload-subhint {
+  color: #93a3b8;
+  font-size: 22rpx;
+  line-height: 32rpx;
+}
+.upload-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 76rpx;
+}
+.upload-info-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+}
+.upload-icon {
+  display: block;
+  margin-right: 12rpx;
+}
+.upload-filename {
+  flex: none;
+  max-width: 80%;
+  overflow: hidden;
+  color: #1f7a4d;
+  font-size: 26rpx;
+  font-weight: 700;
+  line-height: 38rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.upload-again {
+  margin-top: 8rpx;
+  color: #64748b;
+  font-size: 23rpx;
+  line-height: 34rpx;
+  text-align: center;
+}
+/* 框外说明：仅在待确认状态显示 */
+.upload-tip {
+  display: block;
+  margin-top: 10rpx;
+  color: #64748b;
+  font-size: 23rpx;
+  line-height: 34rpx;
+}
+
+.sk-upload-field {
+  margin-top: 16rpx;
+  margin-bottom: 10rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #edf1f6;
+}
+
+
+/* ===== 已确认状态横幅 ===== */
+.confirmed-banner {
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+  padding: 18rpx 20rpx;
+  border: 1rpx solid #bbf7d0;
+  border-radius: 8rpx;
+  background: #f0fdf4;
+}
+
+/* 驳回状态下紧跟说明卡片的错误提示，不再叠加间距 */
+.reject-reason-item + .msg-error {
+  margin-top: 0;
+}
+
+.confirmed-icon {
+  display: block;
+  margin-right: 12rpx;
+}
+
+.confirmed-text {
+  color: #166534;
+  font-size: 25rpx;
+  line-height: 36rpx;
+}
+
+/* ===== 不同状态的横幅变体 ===== */
+.banner-approved {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+.text-approved {
+  color: #16a34a;
+}
+
+.banner-rejected {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.text-rejected {
+  color: #dc2626;
+}
+
+/* ===== 不同状态的按钮特调 ===== */
+.btn-primary.btn-approved[disabled] {
+  background: #22c55e !important; /* 更沉稳鲜亮的绿色 */
+  color: #ffffff !important;
+  opacity: 0.9;
+}
+
+.btn-primary.btn-rejected {
+  background: #f87171 !important; /* 红色 */
+  color: #ffffff !important;
+}
+
+/* 驳回后未上传协议时的按钮文案较长，弱化其"可点击"观感（点击不会有反应） */
+.btn-primary.btn-rejected.btn-rejected-hint {
+  font-size: 28rpx;
+  opacity: 0.75;
+}
+
+/* ===== 驳回原因说明（位于卡片内、提交按钮上方） ===== */
+/* 标签与说明文本同段拼接：换行后新行直接从左侧开始，不会留出标签宽度的空白 */
+.reject-reason-item {
+  margin-top: 0;
+  margin-bottom: 5rpx;
+  padding: 18rpx 20rpx;
+  border-radius: 8rpx;
+  background: #fef2f2;
+  font-size: 27rpx;
+  line-height: 40rpx;
+  word-break: break-all;
+}
+.reject-reason-label {
+  display: inline;
+  color: #526174;
+  font-size: 27rpx;
+  line-height: 40rpx;
+}
+.reject-reason-text {
+  display: inline;
+  color: #172033;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+/* 说明超过 60 字时由 JS 截断，这里只需保证一段内连排 */
+.reject-reason-more {
+  color: #2563eb;
+  font-size: 27rpx;
+  line-height: 40rpx;
+}

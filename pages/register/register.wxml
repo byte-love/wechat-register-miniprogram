@@ -1,0 +1,385 @@
+<view class="page-shell">
+  <!-- 顶部区域 -->
+  <view class="top-area">
+    <view class="logo-row">
+      <text class="logo-text">DataHub</text>
+      <text class="logo-divider">·</text>
+      <text class="logo-sub">示例数据服务平台</text>
+    </view>
+    <text class="top-title">新用户注册</text>
+    <text class="top-desc">授权手机号即可快速完成注册</text>
+  </view>
+
+  <!-- 步骤条 -->
+  <view class="steps-bar">
+    <view class="step-dot {{stepIndex >= 0 ? 'done' : ''}} {{stepIndex === 0 ? 'current' : ''}}">
+      <view class="step-num">
+        <icon wx:if="{{stepIndex > 0}}" class="step-check-icon" type="success_no_circle" size="14" color="#fff" />
+        <text wx:else>1</text>
+      </view>
+      <text class="step-label">学校</text>
+    </view>
+    <view class="step-line {{stepIndex >= 1 ? 'done' : ''}}" />
+    <view class="step-dot {{stepIndex >= 1 ? 'done' : ''}} {{stepIndex === 1 ? 'current' : ''}}">
+      <view class="step-num">
+        <icon wx:if="{{stepIndex > 1}}" class="step-check-icon" type="success_no_circle" size="14" color="#fff" />
+        <text wx:else>2</text>
+      </view>
+      <text class="step-label">授权</text>
+    </view>
+    <view class="step-line {{stepIndex >= 2 ? 'done' : ''}}" />
+    <view class="step-dot {{stepIndex >= 2 ? 'done' : ''}} {{stepIndex === 2 ? 'current' : ''}}">
+      <view class="step-num">
+        <icon wx:if="{{stepIndex > 2}}" class="step-check-icon" type="success_no_circle" size="14" color="#fff" />
+        <text wx:else>3</text>
+      </view>
+      <text class="step-label">资料</text>
+    </view>
+    <view class="step-line {{stepIndex >= 3 ? 'done' : ''}}" />
+    <view class="step-dot {{stepIndex >= 3 ? 'done' : ''}} {{stepIndex === 3 ? 'current' : ''}}">
+      <view class="step-num">
+        <icon wx:if="{{step === 'success'}}" class="step-check-icon" type="success_no_circle" size="14" color="#fff" />
+        <text wx:else>4</text>
+      </view>
+      <text class="step-label">完成</text>
+    </view>
+  </view>
+
+  <!-- ========== 第一步：学校选择 ========== -->
+  <view wx:if="{{step === 'school'}}" class="card">
+    <view class="card-body">
+      <view class="field">
+        <text class="field-label">学校全称</text>
+        <view class="input-wrap {{errors.school ? 'input-error' : ''}}">
+          <input class="field-input" value="{{form.schoolName}}" placeholder="输入学校名称，支持模糊搜索" bindinput="onSchoolInput" bindfocus="onSchoolFocus" />
+        </view>
+        <view wx:if="{{schoolSuggestVisible && schoolSuggest.length}}" class="suggest-list">
+          <view wx:for="{{schoolSuggest}}" wx:key="*this" class="suggest-item" data-name="{{item}}" bindtap="selectSchool">{{item}}</view>
+        </view>
+        <view class="field-error">{{errors.school}}</view>
+      </view>
+
+      <view class="field">
+        <text class="field-label">选择身份</text>
+        <radio-group class="radio-list" bindchange="onIdentityChange">
+          <label wx:for="{{identityOptions}}" wx:key="value" class="radio-row {{form.identity === item.value ? 'radio-checked' : ''}}">
+            <radio value="{{item.value}}" checked="{{form.identity === item.value}}" color="#2563EB" />
+            <text>{{item.label}}</text>
+          </label>
+        </radio-group>
+        <view class="field-error">{{errors.identity}}</view>
+      </view>
+    </view>
+
+    <view class="agreement-bar">
+      <icon wx:if="{{policyAgreed}}" class="check-icon-native" type="success" size="18" color="#2563eb" bindtap="onToggleAgree" />
+      <view wx:else class="check-icon" bindtap="onToggleAgree" />
+      <text bindtap="onToggleAgree">已阅读并同意</text>
+      <text class="link" catchtap="goUserService">《用户服务协议》</text>
+      <text>和</text>
+      <text class="link" catchtap="goPrivacy">《隐私政策》</text>
+    </view>
+
+    <view class="card-footer">
+      <button class="btn-primary" loading="{{checkingSchool}}" disabled="{{checkingSchool}}" bindtap="goFromSchool">下一步</button>
+    </view>
+  </view>
+
+  <!-- ========== 第二步：授权手机号 ========== -->
+  <view wx:if="{{step === 'auth'}}" class="card">
+    <view class="card-body auth-body">
+      <view wx:if="{{!authShowManual}}" class="auth-panel">
+        <view class="auth-icon-wrap">
+          <text class="auth-icon-phone">📱</text>
+        </view>
+        <text class="auth-title">手机号授权</text>
+        <text class="auth-desc">您的手机号仅用于注册验证，不会对外公开</text>
+        <button class="btn-auth" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" loading="{{exchangingPhone}}" disabled="{{exchangingPhone}}">
+          一键授权手机号
+        </button>
+        <text class="auth-skip" bindtap="onShowManualPhone">暂不方便授权？手动输入手机号</text>
+      </view>
+      <view wx:else class="auth-panel">
+        <text class="auth-title" style="margin-bottom:28rpx">输入手机号</text>
+        <view class="input-wrap {{authPhoneError ? 'input-error' : ''}}" style="width:100%;margin-bottom:22rpx">
+          <input class="field-input" type="number" maxlength="11" value="{{form.phone}}" placeholder="请输入手机号" bindinput="onManualPhoneInput" />
+        </view>
+        <view class="code-row">
+          <view class="input-wrap code-wrap {{smsCodeError ? 'input-error' : ''}}">
+            <input class="field-input" type="number" maxlength="6" value="{{smsCode}}" placeholder="请输入验证码" bindinput="onCodeInput" />
+          </view>
+          <button class="send-btn" size="mini" disabled="{{counting}}" bindtap="sendCode">
+            {{counting ? count + 's后重发' : "发送验证码"}}
+          </button>
+        </view>
+        <button class="btn-primary" style="width:100%" disabled="{{!form.phone}}" loading="{{exchangingPhone}}" bindtap="onConfirmManualPhone">确认并继续</button>
+        <text class="auth-skip" bindtap="onCancelManualPhone">返回授权</text>
+      </view>
+      <view wx:if="{{authPhoneError || smsCodeError}}" class="msg-error" style="margin-top:20rpx">{{authPhoneError || smsCodeError}}</view>
+      </view>
+      <view class="card-footer">
+        <button class="btn-secondary" bindtap="backToSchool">上一步</button>
+      </view>
+  </view>
+
+  <!-- ========== 第三步：填写资料 ========== -->
+  <view wx:if="{{step === 'form'}}" class="card">
+    <view class="card-body">
+      <text class="card-title">{{form.identity === 'Teacher' ? '注册信息' : '注册信息'}}</text>
+      <view class="notice-bar">
+        <text class="notice-text">如您无法提交成功，请将注册所需<text class="notice-info-download" bindtap="downloadRegistrationInfo">全部信息</text>发送到邮箱<text class="notice-email">customerservice@api.example.com</text>，我们会在一个工作日内处理。</text>
+      </view>
+
+      <!-- 身份细分（其他研究人员） -->
+      <view wx:if="{{form.identity === 'Other'}}" class="field">
+        <text class="field-label">身份选项</text>
+        <radio-group class="radio-list" bindchange="onSubIdentityChange">
+          <label wx:for="{{subIdentityOptions}}" wx:key="value" class="radio-row {{form.subIdentity === item.value ? 'radio-checked' : ''}}">
+            <radio value="{{item.value}}" checked="{{form.subIdentity === item.value}}" color="#2563EB" />
+            <text>{{item.label}}</text>
+          </label>
+        </radio-group>
+        <view class="field-error">{{errors.subIdentity}}</view>
+      </view>
+
+      <!-- 姓名 + 微信授权手机号 -->
+      <view class="field-row">
+        <view class="field field-half">
+          <text class="field-label">姓名 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.name ? 'input-error' : ''}}">
+            <input class="field-input" value="{{form.name}}" placeholder="请输入姓名" data-field="name" bindinput="onTextInput" />
+          </view>
+          <view class="field-error">{{errors.name}}</view>
+        </view>
+        <view class="field field-half">
+          <text class="field-label">手机号</text>
+          <view class="input-wrap" style="background:#f6f8fb">
+            <input class="field-input" value="{{form.phone}}" placeholder="授权获取" disabled style="color:#64748b" />
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{showPhoneDept}}" class="check-inline">
+        <checkbox class="check-inline-checkbox" checked="{{form.receiveSms}}" color="#2563EB" bindtap="toggleSms" />
+        <text class="check-text">接收数据服务提醒短信</text>
+      </view>
+
+      <!-- 学院 + 系别 -->
+      <view class="field-row">
+        <view class="field field-half">
+          <text class="field-label">学院 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.college ? 'input-error' : ''}}">
+            <input class="field-input" value="{{form.college}}" placeholder="请输入学院" data-field="college" bindinput="onTextInput" />
+          </view>
+          <view class="field-error">{{errors.college}}</view>
+        </view>
+        <view wx:if="{{showPhoneDept}}" class="field field-half">
+          <text class="field-label">系别 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.department ? 'input-error' : ''}}">
+            <input class="field-input" value="{{form.department}}" placeholder="请输入系别" data-field="department" bindinput="onTextInput" />
+          </view>
+          <view class="field-error">{{errors.department}}</view>
+        </view>
+      </view>
+
+      <!-- 教师：身份验证方式 -->
+      <view wx:if="{{form.identity === 'Teacher' && showTeacherVerify}}" class="field">
+        <text class="field-label">验证方式</text>
+        <radio-group class="radio-list-h" bindchange="onEmailTypeChange">
+          <label class="radio-pill {{form.emailType === 'workemail' ? 'pill-checked' : ''}}">
+            <radio value="workemail" checked="{{form.emailType === 'workemail'}}" color="#2563EB" />
+            <text>工作邮箱</text>
+          </label>
+          <label class="radio-pill {{form.emailType === 'otherway' ? 'pill-checked' : ''}}">
+            <radio value="otherway" checked="{{form.emailType === 'otherway'}}" color="#2563EB" />
+            <text>其他验证</text>
+          </label>
+        </radio-group>
+      </view>
+
+      <!-- 邮箱 -->
+      <block wx:if="{{form.identity === 'Teacher' && form.emailType === 'workemail'}}">
+        <view class="field">
+          <text class="field-label">工作邮箱 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.workEmail ? 'input-error' : ''}}">
+            <input class="field-input" value="{{form.workEmail}}" placeholder="请输入工作邮箱" data-field="workEmail" bindinput="onTextInput" />
+            <text wx:if="{{emailSuffix}}" class="input-suffix">{{emailSuffix}}</text>
+          </view>
+          <view class="field-error">{{errors.workEmail}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="field">
+          <text class="field-label">个人邮箱 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.email ? 'input-error' : ''}}">
+            <input class="field-input" type="email" value="{{form.email}}" placeholder="请输入邮箱地址" data-field="email" bindinput="onTextInput" />
+          </view>
+          <view class="field-error">{{errors.email}}</view>
+        </view>
+      </block>
+
+      <view class="check-inline">
+        <checkbox class="check-inline-checkbox" checked="{{form.receiveEmail}}" color="#2563EB" bindtap="toggleEmail" />
+        <text class="check-text">接收数据服务提醒邮件</text>
+      </view>
+
+      <!-- 学号 / 入学年份 / 学制 -->
+      <view wx:if="{{needStudentNo || form.identity === 'Doctor' || form.identity === 'Other'}}" class="field-row">
+        <view wx:if="{{needStudentNo}}" class="field field-half">
+          <text class="field-label">学号 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.studentId ? 'input-error' : ''}}">
+            <input class="field-input" value="{{form.studentId}}" placeholder="请输入学号" data-field="studentId" bindinput="onTextInput" />
+          </view>
+          <view class="field-error">{{errors.studentId}}</view>
+        </view>
+        <view wx:if="{{form.identity === 'Doctor' || form.identity === 'Other'}}" class="field field-half">
+          <text class="field-label">入学年份 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.enrollmentYear ? 'input-error' : ''}}">
+            <input class="field-input" type="number" maxlength="4" value="{{form.enrollmentYear}}" placeholder="请输入入学年份" data-field="enrollmentYear" bindinput="onTextInput" />
+          </view>
+          <view class="field-error">{{errors.enrollmentYear}}</view>
+        </view>
+        <view wx:if="{{form.identity === 'Doctor' || form.identity === 'Other'}}" class="field field-half">
+          <text class="field-label">学制 <text style="color:#EF4444">*</text></text>
+          <view class="input-wrap {{errors.eduSystem ? 'input-error' : ''}}">
+            <input class="field-input" type="digit" maxlength="4" value="{{form.eduSystem}}" placeholder="请输入学制" data-field="eduSystem" bindinput="onTextInput" />
+          </view>
+          <view class="field-error">{{errors.eduSystem}}</view>
+        </view>
+      </view>
+
+      <!-- 上传证件 -->
+      <view wx:if="{{needCertUpload}}" class="field">
+        <text class="field-label">上传证件 <text style="color:#EF4444">*</text></text>
+        <view class="upload-box {{form.certFileName ? 'upload-done' : ''}} {{errors.certFile && form.certFileName ? 'upload-err' : ''}}" data-type="cert" bindtap="chooseImage">
+          <view wx:if="{{!form.certFileName}}" class="upload-placeholder">
+            <text class="upload-plus">+</text>
+            <text class="upload-hint">请上传证件照片</text>
+          </view>
+          <view wx:else class="upload-info">
+            <icon class="upload-icon" type="success" size="22" color="#22a06b" />
+            <text class="upload-filename">{{form.certFileName}}</text>
+            <text class="upload-again">点击重新上传</text>
+          </view>
+        </view>
+        <view class="upload-tips">
+          <text class="upload-tip">·　证件必须包含所在学院和学历层次信息</text>
+          <text class="upload-tip">·　如：学生证、校园卡、工作证等身份证明</text>
+          <text class="upload-tip">·　可上传格式为.jpg、.png</text>
+        </view>
+        <view class="field-error">{{errors.certFile}}</view>
+      </view>
+
+      <!-- 上传资料（非教师） -->
+      <view wx:if="{{form.identity !== 'Teacher'}}" class="field">
+        <text class="field-label">上传资料 <text style="color:#EF4444">*</text></text>
+        <text class="upload-link protocol-download" bindtap="downloadProtocol">{{protocolDownloading ? '协议下载中…' : '下载《DataHub 平台数据使用协议》'}}</text>
+        <view class="upload-box {{form.protocolFileName ? 'upload-done' : ''}} {{errors.protocolFile && form.protocolFileName ? 'upload-err' : ''}}" data-type="protocol" bindtap="chooseImage">
+          <view wx:if="{{!form.protocolFileName}}" class="upload-placeholder">
+            <text class="upload-plus">+</text>
+            <text class="upload-hint">请上传您亲笔签名的数据使用协议</text>
+          </view>
+          <view wx:else class="upload-info">
+            <icon class="upload-icon" type="success" size="22" color="#22a06b" />
+            <text class="upload-filename">{{form.protocolFileName}}</text>
+            <text class="upload-again">点击重新上传</text>
+          </view>
+        </view>
+        <text class="upload-tip">·　可上传的格式为.jpg、.png，不大于8M</text>
+        <view class="field-error">{{errors.protocolFile}}</view>
+      </view>
+
+      <view wx:if="{{submitError}}" class="msg-error">{{submitError}}</view>
+    </view>
+    <view class="card-footer">
+      <button class="btn-secondary" bindtap="backToAuth">上一步</button>
+      <button class="btn-primary" loading="{{submitting}}" disabled="{{submitting}}" bindtap="goFromForm">
+        {{form.identity === 'Teacher' ? '下一步' : '提交注册'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- ========== 协议确认页（教师） ========== -->
+  <view wx:if="{{step === 'agreement'}}" class="card">
+    <view class="card-body">
+      <text class="card-title">DataHub 平台数据使用协议</text>
+      <view class="agreement-box">
+        <text class="ag-text">尊敬的用户，您好！</text>
+        <text class="ag-text">{{baseIPA ? '您注册此账户后可获取 DataHub 平台基础库的完整权限。为保障数据安全，请您阅读并确认以下条款：' : '为规范使用 DataHub 平台数据，请您阅读并确认以下条款：'}}</text>
+        <view class="ag-list">
+          <text class="ag-item"><text class="ag-num">1.</text> 所下载数据仅限本人教学科研使用，不得转让、复制、传播给第三方。</text>
+          <text class="ag-item"><text class="ag-num">2.</text> 使用数据发表成果时，应注明数据来源于 DataHub 平台。</text>
+          <text class="ag-item"><text class="ag-num">3.</text> 用户须遵守所在学校及平台的数据使用规范。</text>
+          <text class="ag-item"><text class="ag-num">4.</text> 若违反协议，平台有权暂停或终止账号权限。</text>
+        </view>
+      </view>
+
+      <view class="check-inline agree-row">
+        <checkbox class="check-inline-checkbox" checked="{{agreed}}" color="#2563EB" bindtap="toggleAgree" />
+        <text class="agree-text">我已阅读并同意以上协议</text>
+      </view>
+      <view class="field-error">{{errors.agree}}</view>
+      <view wx:if="{{submitError}}" class="msg-error">{{submitError}}</view>
+    </view>
+    <view class="card-footer">
+      <button class="btn-secondary" bindtap="backToForm">上一步</button>
+      <button class="btn-primary" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submitAfterAgreement">提交注册</button>
+    </view>
+  </view>
+
+  <!-- ========== 注册成功 ========== -->
+  <view wx:if="{{step === 'success'}}" class="card success-card">
+    <view wx:if="{{successIconType === 'email'}}" class="success-icon success-email-icon">
+      <image class="success-email-image" src="{{successEmailIconSrc}}" mode="aspectFit" />
+    </view>
+    <icon wx:else class="success-icon" type="{{successIconType}}" size="64" color="{{successIconColor}}" />
+    <text class="success-title">{{successTitle}}</text>
+    <text class="success-desc">{{successDescription}}</text>
+    <view wx:if="{{showSuccessEmail}}" class="success-email-info">
+      <text class="success-email-label">{{successEmailLabel}}</text>
+      <text class="success-email-value">{{successEmail}}</text>
+    </view>
+    <view wx:if="{{emailResendWarning}}" class="registration-help">{{emailResendWarning}}</view>
+    <view wx:if="{{canModifyEmail && !registrationStatusChecking}}" class="card-footer" style="margin-top: 32rpx">
+      <button class="btn-primary success-email-edit-button" bindtap="openEmailEditor">修改邮箱</button>
+    </view>
+    <view wx:if="{{successActionLabel}}" class="card-footer success-action-footer">
+      <button class="btn-primary success-email-edit-button" bindtap="finishRegistrationResult">{{successActionLabel}}</button>
+    </view>
+    <view wx:if="{{showAccountHelp}}" class="registration-help account-help">
+      <text>如需找回账号，请发送邮件至 </text>
+      <text class="registration-help-email">customerservice@api.example.com</text>
+    </view>
+    <view wx:if="{{showRegistrationHelp}}" class="registration-help">
+      <text>如您无法提交成功，请将注册所需</text>
+      <text class="registration-help-emphasis">全部信息</text>
+      <text>发送到邮箱 </text>
+      <text class="registration-help-email">customerservice@api.example.com</text>
+      <text>，我们会在一个工作日内处理。</text>
+    </view>
+  </view>
+
+  <view wx:if="{{emailEditorVisible}}" class="email-editor-mask" bindtap="closeEmailEditor" catchtouchmove="stopPropagation">
+    <view class="email-editor-dialog" catchtap="stopPropagation">
+      <text class="email-editor-title">修改邮箱</text>
+      <text class="email-editor-desc">确认后，激活邮件将重新发送至新邮箱</text>
+      <view class="email-editor-field {{emailEditError ? 'input-error' : ''}}">
+        <input
+          class="email-editor-input"
+          type="{{emailEditWorkMode ? 'text' : 'email'}}"
+          value="{{emailDraft}}"
+          placeholder="请输入新邮箱"
+          focus="{{emailEditorVisible}}"
+          bindinput="onEmailDraftInput"
+          bindconfirm="confirmEmailUpdate"
+        />
+        <text wx:if="{{emailEditWorkMode}}" class="email-editor-suffix">{{emailEditSuffix}}</text>
+      </view>
+      <view wx:if="{{emailEditError}}" class="email-editor-error">{{emailEditError}}</view>
+      <view class="email-editor-actions">
+        <button class="btn-secondary email-editor-button" disabled="{{emailUpdating}}" bindtap="closeEmailEditor">取消</button>
+        <button class="btn-primary email-editor-button" loading="{{emailUpdating}}" disabled="{{emailUpdating}}" bindtap="confirmEmailUpdate">确认修改</button>
+      </view>
+    </view>
+  </view>
+</view>

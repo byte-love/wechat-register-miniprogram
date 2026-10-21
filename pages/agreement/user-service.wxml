@@ -1,0 +1,87 @@
+<view class="agreement-page">
+  <text class="document-title">DataHub 平台注册协议</text>
+
+  <view class="section-card">
+    <text class="paragraph">本协议由您（下称用户）与示例科技有限公司（下称平台）就 DataHub 注册小程序及相关服务的使用而签订。</text>
+    <text class="paragraph important">请您在注册前仔细阅读本协议各项条款，特别是限制或免除责任条款、账号规则、法律适用和争议解决条款。平台已用加粗等形式提示您注意重要条款，请务必重点查阅。您勾选同意或实际使用平台服务，即视为您已阅读、理解并接受本协议。</text>
+    <text class="paragraph">如您对本协议有任何疑问、投诉或建议，欢迎通过文末联系方式与平台沟通反馈。</text>
+    <text class="paragraph important">若您未满 18 周岁，请在法定监护人陪同下阅读本协议，并在取得监护人同意后使用平台服务。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">01</text><text class="section-title">基础约定</text></view>
+    <text class="paragraph">1.1 协议范围：本协议包括协议正文以及平台依据法律法规制定并发布的其他政策、规则、公告声明（除非特有所指，合称本协议），您应当一并遵守。</text>
+    <text class="paragraph">1.2 服务范围：平台通过 DataHub 注册小程序向您提供账号注册申请及相关服务，包括但不限于学校与身份核验、手机号与邮箱验证、协议文件的查看下载、签署材料上传、注册结果通知等。具体以平台实时呈现的服务内容和形式为准。</text>
+    <text class="paragraph">1.3 修改与更新：平台有权遵照法律法规规定，在必要时修改本协议。更新后的条款将代替原协议并在法定期限届满后生效，您可以在本页面查阅最新版本。本协议修改后，您继续使用平台服务的，视为接受修改后的协议；您有权在不接受时停止使用平台服务。</text>
+    <text class="paragraph">1.4 授权许可：平台授予用户一项个人的、不可转让的免费许可，供您以非商业目的使用平台服务。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">02</text><text class="section-title">平台服务内容</text></view>
+    <text class="paragraph">2.1 本小程序提供的核心服务是 DataHub 账号的注册申请：您提交学校、身份、联系方式等资料，平台核验后为您开通相应权限的账号。</text>
+    <text class="paragraph important">2.2 DataHub 数据库中数据的访问和使用规则由您签署的《DataHub 平台数据使用协议》另行约定，本协议与其不一致的，数据使用事项以《DataHub 平台数据使用协议》为准。</text>
+    <text class="paragraph">2.3 平台有权根据实际情况确定服务的具体内容、功能和形式，并有权自行决定增加、变更、中断和停止具体的服务内容、功能和形式。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">03</text><text class="section-title">用户账号规则</text></view>
+    <text class="paragraph">3.1 您在注册时须提供必要信息，包括姓名、手机号、电子邮箱、所在学校、院系、身份类型、入学年份、学制、学号以及身份证明或签署的协议材料等（以页面实际要求为准）。<text class="important-inline">您须保证所填写及提供的资料真实、准确、完整</text>，否则可能无法通过审核或在使用过程中受到限制。因您提供的信息不真实、不准确或不完整导致的责任和损失由您承担。</text>
+    <text class="paragraph">3.2 平台有权根据您所提供资料的真实性、准确性、完整性以及是否符合平台服务规定的其他条件，决定是否为您开通账号。您所提供的信息发生变动的，应及时更新。</text>
+    <text class="paragraph important">3.3 您注册成功后，账号之所有权归平台所有，您在本协议有效期内仅享有使用权。未经平台同意，账号仅供您本人使用，账号信息和权限不得以转让、赠与、借用、售卖、授权或租用等方式许可给第三方使用，或和第三方共同控制、使用。</text>
+    <text class="paragraph">3.4 如不同账号绑定或关联同一手机号、同一身份信息，所述不同账号可能被视为关联账号，平台有权进行合并或注销相关账号。</text>
+    <text class="paragraph">3.5 如您需要注销账号，可通过平台公布的方式、程序进行，平台在核实身份并处理相关事项后为您提供注销服务。<text class="important-inline">平台同时保留在以下情形直接回收并注销账号的权利：（1）未通过身份核验；（2）连续12个月未登录使用平台服务；（3）毕业、离职等导致机构授权失效；（4）其他违反本协议的情况。</text></text>
+    <text class="paragraph important">3.6 您有责任自行保管账号和密码等信息，否则因该等事项引发的法律责任由您自行承担。凡使用您账号和登录凭证的行为，平台视为您本人的操作，操作所产生的电子信息记录均为有效凭证。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">04</text><text class="section-title">用户行为规范</text></view>
+    <text class="paragraph">4.1 您保证合理地使用平台服务，并接受本协议和平台适时制定并发布的其他政策、规则、公告声明。</text>
+    <text class="paragraph">4.2 行为禁止：您可在本协议约定的范围内使用平台及服务，您不得利用平台从事以下行为：</text>
+    <view class="item-list">
+      <view class="item"><text class="item-dot">1.</text><text>超出授权或恶意使用平台服务，包括将获取的数据用于约定范围之外的用途</text></view>
+      <view class="item"><text class="item-dot">2.</text><text>冒用他人身份，伪造或变造学籍、在职等证明材料获取注册资格</text></view>
+      <view class="item"><text class="item-dot">3.</text><text>利用平台发表、传送、传播、储存违反国家法律法规政策的内容</text></view>
+      <view class="item"><text class="item-dot">4.</text><text>利用平台侵害他人知识产权、隐私权、名誉权、个人信息等合法权利或权益</text></view>
+      <view class="item"><text class="item-dot">5.</text><text>恶意虚构或协助虚构事实、信息或数据</text></view>
+      <view class="item"><text class="item-dot">6.</text><text>进行任何危害计算机网络安全的行为，包括但不限于：未经许可进入他人计算机系统并删除、修改、增加存储信息；企图探查、扫描、测试平台系统或网络的弱点；故意传播恶意程序或病毒；使用爬虫等自动化手段批量抓取平台数据</text></view>
+      <view class="item"><text class="item-dot">7.</text><text>对平台进行反向工程、反向编译或反向汇编，或以其它方式企图获取平台的源代码和算法</text></view>
+      <view class="item"><text class="item-dot">8.</text><text>从事其他法律法规、政策及公序良俗、社会公德禁止的行为，以及侵犯其他个人、公司、社会团体、组织的合法权益的行为</text></view>
+    </view>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">05</text><text class="section-title">个人信息保护</text></view>
+    <text class="paragraph paragraph-inline">平台重视用户个人信息的保护，收集、存储、使用您的个人信息将遵循合法、正当、必要原则。具体规则见</text><text class="inline-link" bindtap="goPrivacy">《隐私政策》</text><text class="paragraph paragraph-inline">，请您一并仔细阅读。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">06</text><text class="section-title">知识产权</text></view>
+    <text class="paragraph">平台服务中包含的软件、界面设计、文字、数据编排等内容的知识产权归平台或相应权利人所有。未经书面许可，您不得复制、修改、传播或用于任何商业目的。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">07</text><text class="section-title">免责与责任限制</text></view>
+    <text class="paragraph">7.1 平台因系统维护、升级、故障、不可抗力等原因导致服务中断或数据延迟的，将尽力及时修复，在法律允许的范围内对由此造成的损失免责。</text>
+    <text class="paragraph">7.2 审核结果依据您提交的资料和所在机构的授权情况作出，资料或授权变化可能影响您的使用资格。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">08</text><text class="section-title">协议的终止</text></view>
+    <text class="paragraph">您注销账号、平台依约回收账号或双方另行约定的终止情形出现时，本协议终止。终止后，平台仍可依据法律法规要求保留必要的记录。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">09</text><text class="section-title">法律适用与争议解决</text></view>
+    <text class="paragraph">本协议适用中华人民共和国法律。因本协议产生的争议，双方应友好协商解决；协商无果的，任一方可向上海市宝山区有管辖权的人民法院提起诉讼。</text>
+  </view>
+
+  <view class="section-card">
+    <view class="section-heading"><text class="section-index">10</text><text class="section-title">联系方式</text></view>
+    <text class="paragraph">如对本协议或平台服务有任何疑问、投诉或建议，请联系平台客服。</text>
+    <text class="paragraph">客服邮箱：customerservice@api.example.com</text>
+    <text class="paragraph">服务热线：021-66181082</text>
+  </view>
+  <view class="acknowledge-bar">
+    <button class="acknowledge-button" bindtap="acknowledge">我已知晓</button>
+  </view>
+</view>

@@ -1,0 +1,118 @@
+<view class="page-shell">
+  <!-- ========== 加载中 ========== -->
+  <view wx:if="{{step === 'loading'}}" class="card">
+    <view class="card-body">
+      <text class="card-title">正在加载申请信息…</text>
+    </view>
+  </view>
+
+  <!-- ========== 确认信息 ========== -->
+  <view wx:if="{{step === 'confirm'}}" class="card">
+    <view class="card-body">
+      <text class="card-title" wx:if="{{applyStatus === 'PENDING' || applyStatus === 'CONFIRMED'}}">请确认数据交付申请信息</text>
+
+      <view class="sk-intro">
+        <text class="sk-intro-line">以下数据库为<text class="highlight-free">免费赠送</text></text>
+        <text class="sk-intro-line">如有疑问请联系我们(电话：13391311631)</text>
+      </view>
+
+      <view class="sk-info-list">
+        <view class="sk-info-item">
+          <text class="sk-info-label">姓名</text>
+          <text class="sk-info-value">{{nickName || '未提供'}}</text>
+        </view>
+        <view class="sk-info-item">
+          <text class="sk-info-label">学校</text>
+          <text class="sk-info-value">{{school || '未提供'}}</text>
+        </view>
+        <view class="sk-info-item">
+          <text class="sk-info-label">邮箱</text>
+          <text class="sk-info-value">{{email || '未提供'}}</text>
+        </view>
+        <view class="sk-info-item">
+          <text class="sk-info-label">手机</text>
+          <text class="sk-info-value">{{phone || '未提供'}}</text>
+        </view>
+      </view>
+
+      <view class="sk-db-title">赠送数据库列表</view>
+      <view class="sk-db-list-wrap">
+        <view class="sk-db-list">
+          <view class="sk-db-item" wx:for="{{databases}}" wx:key="*this">
+            <text class="sk-db-dot">•</text>
+            <text class="sk-db-name">{{item}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="sk-info-item sk-giver-item">
+        <text class="sk-info-label">赠送人</text>
+        <text class="sk-info-value">{{responsiblePerson || '未提供'}}</text>
+      </view>
+
+      <view class="field sk-upload-field" wx:if="{{!isConfirmed || applyStatus === 'REJECTED'}}">
+        <text class="field-label">{{applyStatus === 'REJECTED' ? '审批未通过，请重新上传《数据库赠送协议》' : '上传《数据库赠送使用协议》'}} <text style="color:#EF4444">*</text></text>
+        <view class="upload-box {{protocolFileName ? 'upload-done' : ''}}" bindtap="chooseProtocolImage">
+          <view wx:if="{{!protocolFileName}}" class="upload-placeholder">
+            <text class="upload-plus">+</text>
+            <!-- 已拒绝：格式说明并进框内第二行；待确认：保持原来的单行 + 框下说明 -->
+            <view wx:if="{{applyStatus === 'REJECTED'}}" class="upload-text">
+              <text class="upload-hint">拍照或选择图片</text>
+              <text class="upload-subhint">支持jpg/png，不大于8M</text>
+            </view>
+            <text wx:else class="upload-hint">拍照或选择图片</text>
+          </view>
+          <view wx:else class="upload-info">
+            <view class="upload-info-top">
+              <icon class="upload-icon" type="success" size="18" color="#22a06b" />
+              <text class="upload-filename">{{protocolFileName}}</text>
+            </view>
+            <text class="upload-again">点击重新上传</text>
+          </view>
+        </view>
+        <text class="upload-tip" wx:if="{{applyStatus !== 'REJECTED'}}">说明：请上传数据库赠送协议，支持jpg/png，不大于8M。</text>
+      </view>
+
+      <!-- 驳回原因说明（超过 57 字截断，可展开看全文） -->
+      <view class="reject-reason-item" wx:if="{{applyStatus === 'REJECTED'}}">
+        <text class="reject-reason-label">未通过说明：</text>
+        <text class="reject-reason-text">{{rejectReasonExpanded ? rejectReasonFull : rejectReason}}</text>
+        <text class="reject-reason-more" wx:if="{{rejectReasonOverflow}}" bindtap="toggleRejectReason">{{rejectReasonExpanded ? ' 收起' : '...展开'}}</text>
+      </view>
+
+      <!-- 各种处理后状态的提示横幅 -->
+      <view class="confirmed-banner banner-confirmed" wx:if="{{applyStatus === 'CONFIRMED'}}">
+        <icon class="confirmed-icon" type="success" size="16" color="#22a06b" />
+        <text class="confirmed-text">您已确认过该申请，正在等待管理员审批</text>
+      </view>
+
+      <view class="confirmed-banner banner-approved" wx:if="{{applyStatus === 'APPROVED'}}">
+        <icon class="confirmed-icon" type="success" size="16" color="#16a34a" />
+        <text class="confirmed-text text-approved">该数据交付申请已审批通过</text>
+      </view>
+
+      <view wx:if="{{submitError}}" class="msg-error">{{submitError}}</view>
+    </view>
+
+    <view class="card-footer">
+      <button class="btn-primary {{applyStatus === 'CONFIRMED' ? 'btn-confirmed' : ''}} {{applyStatus === 'APPROVED' ? 'btn-approved' : ''}} {{applyStatus === 'REJECTED' && !protocolImgUrl ? 'btn-rejected btn-rejected-hint' : ''}}" loading="{{submitting}}" disabled="{{submitting || (isConfirmed && applyStatus !== 'REJECTED')}}" bindtap="confirmApply">{{applyStatus === 'CONFIRMED' ? '已确认' : (applyStatus === 'APPROVED' ? '审批通过' : (applyStatus === 'REJECTED' ? (protocolImgUrl ? '重新提交申请' : '审批未通过，请先上传协议再提交申请') : '确认信息无误'))}}</button>
+    </view>
+  </view>
+
+  <!-- ========== 确认成功 ========== -->
+  <view wx:if="{{step === 'success'}}" class="card success-card">
+    <view class="success-icon-wrap">
+      <text class="success-icon">✓</text>
+    </view>
+    <text class="success-title">已确认</text>
+    <text class="success-desc">您的数据交付申请信息已确认，请等待管理员审批。</text>
+  </view>
+
+  <!-- ========== 出错兜底 ========== -->
+  <view wx:if="{{step === 'error'}}" class="card">
+    <view class="card-body">
+      <text class="card-title">无法加载申请信息</text>
+      <view class="msg-error">{{errorMsg}}</view>
+    </view>
+  </view>
+</view>
